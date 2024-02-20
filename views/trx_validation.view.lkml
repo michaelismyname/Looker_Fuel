@@ -126,6 +126,27 @@ view: trx_validation {
     sql: ${TABLE}.merchant_brand ;;
   }
 
+  dimension: merchant_brand_img {
+    type: string
+    label: "Brand"
+    sql: ${TABLE}.merchant_brand ;;
+    html:
+
+              {% if merchant_brand_img._value == "SHELL" %}
+              <img src="https://images.gasbuddy.io/33xauto/b/122.png" height="25" width="25">
+              {% elsif merchant_brand_img._value == "QUIKTRIP" %}
+              <img src="https://images.gasbuddy.io/33xauto/b/108.png" height="25" width="25">
+              {% elsif merchant_brand_img._value == "TEXACO" %}
+              <img src="https://images.gasbuddy.io/33xauto/b/135.png" height="25" width="25">
+              {% elsif merchant_brand_img._value == "CHEVRON"%}
+              <img src="https://images.gasbuddy.io/33xauto/b/31.png" height="25" width="25">
+              {% else %}
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png" height="25" width="25">
+              {% endif %} ;;
+  }
+
+
+
   dimension: merchant_city {
     type: string
     sql: ${TABLE}.merchant_city ;;
@@ -332,7 +353,7 @@ view: trx_validation {
     type: count_distinct
     label:"Vehicles"
     sql: ${TABLE}.VIN ;;
-    html:  {{Spend}} Spend <br> {{Gallons}} Gallons ;;
+    html:  {{ rendered_value }} Vehicles <br> {{Spend}} Spend <br> {{Gallons}} Gallons ;;
   }
 
   dimension: vehicle_desc2 {
