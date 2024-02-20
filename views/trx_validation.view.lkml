@@ -315,19 +315,25 @@ view: trx_validation {
     drill_fields: [vehicle_display_name, merchant_name, user_name, org_name, fleet_name]
   }
 
-
   measure: Spend {
     type: sum
     value_format: "$#,##0.00"
+    label: "Vehicle Spend"
     sql:  ${TABLE}.total_amount ;;  }
 
   measure: Gallons {
     type: sum
     sql: ${TABLE}.gallons ;;
     value_format: "#,##0.00"
-    html: {{ rendered_value }} gallons ;;
+    html: {{ rendered_value }} ;;
   }
 
+  measure: Distinct_Vehicles {
+    type: count_distinct
+    label:"Vehicles"
+    sql: ${TABLE}.VIN ;;
+    html:  {{Spend}} Spend <br> {{Gallons}} Gallons ;;
+  }
 
   dimension: vehicle_desc2 {
     type: string
