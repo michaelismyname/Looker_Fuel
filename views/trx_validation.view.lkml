@@ -304,7 +304,8 @@ view: trx_validation {
   dimension: veh_thumbnail {
     type: string
     sql: ${TABLE}.veh_thumbnail ;;
-    html: <img src={{veh_thumbnail}}/> ;;
+    html: <img src="{{veh_thumbnail}}"  height="55" width="55" float:left>
+    <br>{{vin}}<br>{{vehicle_display_name}}<br>{{vehicle_number}}<br>;;
     description: "Vehicle"
   }
 
