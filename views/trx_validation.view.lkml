@@ -126,7 +126,7 @@ view: trx_validation {
     sql: ${TABLE}.merchant_brand ;;
     html:
     {% if merchant_brand_img._value == "SHELL" %}
-    <img src="https://images.gasbuddy.io/33xauto/b/122.png" height="25" width="25"><br>
+    <img src="https://images.gasbuddy.io/33xauto/b/122.png" height="25" width="25" float: left><br>
     {{merchant_address}}
     {% elsif merchant_brand_img._value == "QUIKTRIP" %}
     <img src="https://images.gasbuddy.io/33xauto/b/108.png" height="25" width="25">
