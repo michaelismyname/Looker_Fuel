@@ -271,6 +271,7 @@ view: trx_validation {
     type: string
     sql: ${TABLE}.veh_thumbnail ;;
     html: <img src={{veh_thumbnail}}/> ;;
+    description: "Vehicle"
   }
 
   dimension: vehicle_desc {
@@ -317,18 +318,21 @@ view: trx_validation {
 
   measure: Spend {
     type: sum
+    value_format: "$#,##0.00"
     sql:  ${TABLE}.total_amount ;;  }
 
   measure: Gallons {
     type: sum
     sql: ${TABLE}.gallons ;;
-    html: {{ rendered_value }} gallons <br> {{Spend._rendered_value }} spend ;;
+    value_format: "#,##0.00"
+    html: {{ rendered_value }} gallons ;;
   }
 
 
   dimension: vehicle_desc2 {
     type: string
     sql: ${TABLE}.vehicle_desc ;;
+    label: "Description"
     html:
     {% assign split_values = value | split: "<br>" %}
     {% for val in split_values %}
