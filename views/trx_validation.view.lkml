@@ -127,7 +127,7 @@ view: trx_validation {
     html:
     {% if merchant_brand_img._value == "SHELL" %}
     <img src="https://images.gasbuddy.io/33xauto/b/122.png" height="25" width="25"><br>
-    {{merchant_address.value}}
+    {{merchant_address}}
     {% elsif merchant_brand_img._value == "QUIKTRIP" %}
     <img src="https://images.gasbuddy.io/33xauto/b/108.png" height="25" width="25">
     {% elsif merchant_brand_img._value == "TEXACO" %}
