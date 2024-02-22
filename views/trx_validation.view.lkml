@@ -298,9 +298,15 @@ view: trx_validation {
   dimension: veh_thumbnail {
     type: string
     sql: ${TABLE}.veh_thumbnail ;;
+    label: "Vehicle"
     html:
     <p style="float:left; margin: 0 5px; padding: 5px;"><img src="{{veh_thumbnail}}"  height="55" width="55" ></p>
-    <p style="float:left;"> {{vin}}<br>{{vehicle_display_name}}<br>{{vehicle_number}}<br></p>;;
+    <p style="float:left;">
+     {% if vin._value != null %} {{vin}}<br>  {% endif %}
+     {% if vehicle_display_name._value != null %} {{vehicle_display_name}}<br>  {% endif %}
+     {% if vehicle_number._value != null %} {{vehicle_number}}<br>  {% endif %}
+     {% if vehicle_description._value != null %} {{vehicle_description}}  {% endif %}
+    </p>;;
     description: "Vehicle"
   }
 
@@ -362,15 +368,56 @@ view: trx_validation {
     type: count_distinct
     label:"Vehicles"
     sql: ${TABLE}.VIN ;;
-    html:  {{ rendered_value }} Vehicles <br> {{Spend}} Spend <br> {{Gallons}} Gallons ;;
+    html: <p style="font-size: 56px; text-align: left;">{{ rendered_value }} <br> Transacting Vehicles</p>;;
   }
+
+  measure: Vehicle_Header_Descripancy {
+    type: sum
+    sql: ${TABLE}.disc_count ;;
+  }
+  # Dates and timestamps can be represented in Looker using a dimension group of type: time.
+  # Looker converts dates and timestamps to the specified timeframes within the dimension group.
+
 
   measure: Vehicles_Header{
     type: count_distinct
     label:"Vehicles Header"
     sql: ${TABLE}.VIN ;;
-    html:  {{ rendered_value }} Vehicles <br> {{Spend}} Spend <br> {{Gallons}} Gallons ;;
+  html: <div>
+        <p style="font-size: 16px; text-align: left;">
+        <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708531977/no-petrol-icon_qhee7s.svg" title="Telematics provider is not providing fuel data for this vehicle" style="height: 25px; width: 25px;">
+        <span style = "margin-right: 5px;  margin-left: 5px;"> 7</span> Vehicles Not Providing Fuel Data <br>
+        <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708531977/high-risk-alert-icon_iducd9.svg" alt="Telematics provider is not providing fuel data for this vehicle" style="height: 25px; width: 25px;">
+        <span style = "margin-right: 5px;  margin-left: 5px;"> 7</span>Vehicles Not Providing Odometer Data
+        <br>
+        <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708615688/lock-open-icon_hhlpc8.svg" alt="Telematics provider is not providing fuel data for this vehicle" style="height: 25px; width: 25px;">
+        <span style = "margin-right: 5px;  margin-left: 5px;">7</span> Vehicles Transacting Outside of Car IQ
+        </p>
+      </div> ;;
+}
+
+
+  measure: Vehicles_Level_Header{
+    type: count_distinct
+    label:"Vehicles Level Detail Header"
+    sql: ${TABLE}.VIN ;;
+    html:
+
+          {% if Vehicle_Header_Descripancy._value > 0%} {{Vehicle_Header_Descripancy}}< Unverified Transactions <br>  {% endif %}
+    <div>
+
+        <p style="font-size: 16px; text-align: left;">
+        <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708531977/no-petrol-icon_qhee7s.svg" title="Telematics provider is not providing fuel data for this vehicle" style="height: 25px; width: 25px;">
+        <span style = "margin-right: 5px;  margin-left: 5px;"> 7</span> Vehicles Not Providing Fuel Data <br>
+        <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708531977/high-risk-alert-icon_iducd9.svg" alt="Telematics provider is not providing fuel data for this vehicle" style="height: 25px; width: 25px;">
+        <span style = "margin-right: 5px;  margin-left: 5px;"> 7</span>Vehicles Not Providing Odometer Data
+        <br>
+        <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708615688/lock-open-icon_hhlpc8.svg" alt="Telematics provider is not providing fuel data for this vehicle" style="height: 25px; width: 25px;">
+        <span style = "margin-right: 5px;  margin-left: 5px;">7</span> Vehicles Transacting Outside of Car IQ
+        </p>
+      </div> ;;
   }
+
 
 
 
