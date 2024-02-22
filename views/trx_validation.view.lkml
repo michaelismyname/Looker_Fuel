@@ -310,12 +310,6 @@ view: trx_validation {
     description: "Vehicle"
   }
 
-  dimension: vehicle_desc {
-    type: string
-    sql: ${TABLE}.vehicle_desc ;;
-    html: <html>{{ value }}</html>;;
-  }
-
 
   dimension: vehicle_description {
     type: string
@@ -371,6 +365,36 @@ view: trx_validation {
     html: <p style="font-size: 56px; text-align: left;">{{ rendered_value }} <br> Transacting Vehicles</p>;;
   }
 
+  dimension: Fuel_Level_Status{
+    type: string
+    sql: ${TABLE}.Fuel_LEVEL_Category ;;
+  }
+
+  dimension: Odometer_Level_Status{
+    type: string
+    sql: ${TABLE}.Odometer_Category ;;
+  }
+
+
+  measure: Distinct_Vehicles_No_Fuel_Level {
+  type: count_distinct
+    label:"No Fuel Vehicles Distinct"
+  sql: ${TABLE}.Fuel_LEVEL_Distinct ;;
+    }
+
+  measure: Distinct_Vehicles_No_Odometer {
+    type: count_distinct
+    label:"No Odometer Vehicles Distinct"
+    sql: ${TABLE}.Odometer_Distinct ;;
+  }
+
+
+measure: Non_CAR_IQ_TRX {
+  type:  sum
+  label: "Non Car IQ Trx"
+  sql: ${TABLE}.non_car_iq_trx ;;
+}
+
   measure: Vehicle_Header_Descripancy {
     type: sum
     sql: ${TABLE}.disc_count ;;
@@ -386,24 +410,25 @@ view: trx_validation {
   html: <div>
         <p style="font-size: 16px; text-align: left;">
         <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708531977/no-petrol-icon_qhee7s.svg" title="Telematics provider is not providing fuel data for this vehicle" style="height: 25px; width: 25px;">
-        <span style = "margin-right: 5px;  margin-left: 5px;"> 7</span> Vehicles Not Providing Fuel Data <br>
+        <span style = "margin-right: 5px;  margin-left: 5px;"> {{Distinct_Vehicles_No_Fuel_Level}}</span> Vehicles Not Providing Fuel Data <br>
         <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708531977/high-risk-alert-icon_iducd9.svg" alt="Telematics provider is not providing fuel data for this vehicle" style="height: 25px; width: 25px;">
-        <span style = "margin-right: 5px;  margin-left: 5px;"> 7</span>Vehicles Not Providing Odometer Data
+        <span style = "margin-right: 5px;  margin-left: 5px;"> {{Distinct_Vehicles_No_Odometer}}</span>Vehicles Not Providing Odometer Data
         <br>
         <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708615688/lock-open-icon_hhlpc8.svg" alt="Telematics provider is not providing fuel data for this vehicle" style="height: 25px; width: 25px;">
-        <span style = "margin-right: 5px;  margin-left: 5px;">7</span> Vehicles Transacting Outside of Car IQ
+        <span style = "margin-right: 5px;  margin-left: 5px;">{{Non_CAR_IQ_TRX}}</span> Vehicles Transacting Outside of Car IQ
         </p>
       </div> ;;
 }
 
 
-  measure: Vehicles_Level_Header{
-    type: count_distinct
+  dimension: Vehicles_Level_Header{
     label:"Vehicles Level Detail Header"
     sql: ${TABLE}.VIN ;;
     html:
 
           {% if Vehicle_Header_Descripancy._value > 0%} {{Vehicle_Header_Descripancy}}< Unverified Transactions <br>  {% endif %}
+
+
     <div>
 
         <p style="font-size: 16px; text-align: left;">
