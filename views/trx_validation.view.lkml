@@ -367,7 +367,7 @@ view: trx_validation {
 
   measure: Vehicles_Header{
     type: count_distinct
-    label:"Vehicles"
+    label:"Vehicles Header"
     sql: ${TABLE}.VIN ;;
     html:  {{ rendered_value }} Vehicles <br> {{Spend}} Spend <br> {{Gallons}} Gallons ;;
   }
