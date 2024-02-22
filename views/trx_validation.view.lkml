@@ -409,13 +409,33 @@ measure: Non_CAR_IQ_TRX {
     sql: ${TABLE}.VIN ;;
   html: <div>
         <p style="font-size: 16px; text-align: left;">
+
+        {% if Distinct_Vehicles_No_Fuel_Level._value > 0 %}
         <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708531977/no-petrol-icon_qhee7s.svg" title="Telematics provider is not providing fuel data for this vehicle" style="height: 25px; width: 25px;">
         <span style = "margin-right: 5px;  margin-left: 5px;"> {{Distinct_Vehicles_No_Fuel_Level}}</span> Vehicles Not Providing Fuel Data <br>
+        {% else %}
+        <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708531962/gas-station-icon_vrbcjc.svg" title="Telematics provider is not providing fuel data for this vehicle" style="height: 25px; width: 25px;">
+        <span style = "margin-right: 5px;  margin-left: 5px;"></span>All Vehicles are supplying Fuel Data <br>
+        {% endif %}
+
+
+        {% if Distinct_Vehicles_No_Odometer._value > 0 %}
         <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708531977/high-risk-alert-icon_iducd9.svg" alt="Telematics provider is not providing fuel data for this vehicle" style="height: 25px; width: 25px;">
         <span style = "margin-right: 5px;  margin-left: 5px;"> {{Distinct_Vehicles_No_Odometer}}</span>Vehicles Not Providing Odometer Data
         <br>
+        {% else %}
+        <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708627891/speedometer-icon_tl5yei.svg" title="Telematics provider is not providing fuel data for this vehicle" style="height: 25px; width: 25px;">
+        <span style = "margin-right: 5px;  margin-left: 5px;"></span>All Vehicles are supplying Odometer Data <br>
+        {% endif %}
+
+        {% if Non_CAR_IQ_TRX._value > 0 %}
         <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708615688/lock-open-icon_hhlpc8.svg" alt="Telematics provider is not providing fuel data for this vehicle" style="height: 25px; width: 25px;">
-        <span style = "margin-right: 5px;  margin-left: 5px;">{{Non_CAR_IQ_TRX}}</span> Vehicles Transacting Outside of Car IQ
+        <span style = "margin-right: 5px;  margin-left: 5px;">{{Non_CAR_IQ_TRX}}</span>  Vehicles Transacting Outside of Car IQ
+        <br>
+        {% else %}
+        <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708628039/lock-icon_u1wraq.svg" alt="Telematics provider is not providing fuel data for this vehicle" style="height: 25px; width: 25px;">
+        <span style = "margin-right: 5px;  margin-left: 5px;"></span> All Transactions Protected by Car IQ
+        {% endif %}
         </p>
       </div> ;;
 }
