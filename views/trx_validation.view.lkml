@@ -125,40 +125,34 @@ view: trx_validation {
     type: string
     sql: ${TABLE}.merchant_brand ;;
     html:
-    {% if merchant_brand_img._value == "SHELL" %}
-    <img src="https://images.gasbuddy.io/33xauto/b/122.png" height="35" width="35" float: left>
-    {{merchant_address}}
-    {% elsif merchant_brand_img._value == "QUIKTRIP" %}
+    {% if merchant_brand._value == "SHELL" %}
+    <div style="width: 170px; height: 30px; padding: 5px;">
+        Gallons Purchased:  <br>
+        <div style="float:left; text-align:right;  margin: 0 5px;  height: 15px; width:25px">124</div>
+        <div style="float:left;  background-color: #ffd100; margin: 0 5px; height: 20px; width:80px"></div>
+    </div>
+    <br>
+    <div style="width: 170px; height: 30px; padding: 5px;">
+        Gallons Observed In Tank:  <br>
+        <div style="float:left; text-align:right;  margin: 0 5px;  height: 15px; width:25px">12</div>
+        <div style="float:left;  background-color: #ffd100; margin: 0 5px; height: 20px; width:30px"></div>
+    </div>
+    <br>
+    {% elsif merchant_brand._value == "QUIKTRIP" %}
     <img src="https://images.gasbuddy.io/33xauto/b/108.png"  height="35" width="35">
-    {% elsif merchant_brand_img._value == "TEXACO" %}
+     <p style="float:left;" margin-right: 10px;><img src="https://images.gasbuddy.io/33xauto/b/122.png" height="35" width="35"></p>
+    <p style="float:left;" margin-left: 10px;>  {{merchant_address}}<br>  {{vehicle_display_name}}</p>
+    <p style = display: block; background-color: #3d9970 width: 20% ><span class="text"> {{vehicle_display_name}} </span> </p>
+    <p style = display: block; background-color: #3d9970 width: 80% ><span class="text"> {{vehicle_display_name}} </span> </p>
+
+    {% elsif merchant_brand._value == "TEXACO" %}
     <img src="https://images.gasbuddy.io/33xauto/b/135.png" height="35" width="35">
-    {% elsif merchant_brand_img._value == "CHEVRON"%}
+    {% elsif merchant_brand._value == "CHEVRON"%}
     <img src="https://images.gasbuddy.io/33xauto/b/31.png"  height="35" width="35">
     {% else %}
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png" height="25" width="25">
     {% endif %} ;;
   }
-
-  dimension: merchant_brand_img {
-    type: string
-    label: "Brand"
-    sql: ${TABLE}.merchant_brand ;;
-    html:
-
-              {% if merchant_brand_img._value == "SHELL" %}
-              <img src="https://images.gasbuddy.io/33xauto/b/122.png" height="25" width="25">
-              {% elsif merchant_brand_img._value == "QUIKTRIP" %}
-              <img src="https://images.gasbuddy.io/33xauto/b/108.png" height="25" width="25">
-              {% elsif merchant_brand_img._value == "TEXACO" %}
-              <img src="https://images.gasbuddy.io/33xauto/b/135.png" height="25" width="25">
-              {% elsif merchant_brand_img._value == "CHEVRON"%}
-              <img src="https://images.gasbuddy.io/33xauto/b/31.png" height="25" width="25">
-              {% else %}
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png" height="25" width="25">
-              {% endif %} ;;
-  }
-
-
 
   dimension: merchant_city {
     type: string
@@ -304,8 +298,9 @@ view: trx_validation {
   dimension: veh_thumbnail {
     type: string
     sql: ${TABLE}.veh_thumbnail ;;
-    html: <img src="{{veh_thumbnail}}"  height="55" width="55" float:left>
-    <br>{{vin}}<br>{{vehicle_display_name}}<br>{{vehicle_number}}<br>;;
+    html:
+    <p style="float:left; margin: 0 5px; padding: 5px;"><img src="{{veh_thumbnail}}"  height="55" width="55" ></p>
+    <p style="float:left;"> {{vin}}<br>{{vehicle_display_name}}<br>{{vehicle_number}}<br></p>;;
     description: "Vehicle"
   }
 
@@ -369,6 +364,15 @@ view: trx_validation {
     sql: ${TABLE}.VIN ;;
     html:  {{ rendered_value }} Vehicles <br> {{Spend}} Spend <br> {{Gallons}} Gallons ;;
   }
+
+  measure: Vehicles_Header{
+    type: count_distinct
+    label:"Vehicles"
+    sql: ${TABLE}.VIN ;;
+    html:  {{ rendered_value }} Vehicles <br> {{Spend}} Spend <br> {{Gallons}} Gallons ;;
+  }
+
+
 
   dimension: vehicle_desc2 {
     type: string
