@@ -399,6 +399,11 @@ measure: Non_CAR_IQ_TRX {
     type: sum
     sql: ${TABLE}.disc_count ;;
   }
+
+  measure: Vehicle_Header_NonCarIQ {
+    type: sum
+    sql: ${TABLE}.Non_CAR_IQ_TRX ;;
+  }
   # Dates and timestamps can be represented in Looker using a dimension group of type: time.
   # Looker converts dates and timestamps to the specified timeframes within the dimension group.
 
@@ -445,25 +450,49 @@ measure: Non_CAR_IQ_TRX {
     label:"Vehicles Level Detail Header"
     sql: ${TABLE}.VIN ;;
     html:
-
-          {% if Vehicle_Header_Descripancy._value > 0%} {{Vehicle_Header_Descripancy}}< Unverified Transactions <br>  {% endif %}
-
-
-    <div>
-
-        <p style="font-size: 16px; text-align: left;">
-        <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708531977/no-petrol-icon_qhee7s.svg" title="Telematics provider is not providing fuel data for this vehicle" style="height: 25px; width: 25px;">
-        <span style = "margin-right: 5px;  margin-left: 5px;"> 7</span> Vehicles Not Providing Fuel Data <br>
-        <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708531977/high-risk-alert-icon_iducd9.svg" alt="Telematics provider is not providing fuel data for this vehicle" style="height: 25px; width: 25px;">
-        <span style = "margin-right: 5px;  margin-left: 5px;"> 7</span>Vehicles Not Providing Odometer Data
+        {% if Vehicle_Header_Descripancy._value > 0 %}
+        <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708615688/lock-open-icon_hhlpc8.svg" style="height: 25px; width: 25px;">
+        <span style = "margin-right: 5px;  margin-left: 5px;">{{Vehicle_Header_Descripancy}}</span>  Potential Issues Detected
         <br>
-        <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708615688/lock-open-icon_hhlpc8.svg" alt="Telematics provider is not providing fuel data for this vehicle" style="height: 25px; width: 25px;">
-        <span style = "margin-right: 5px;  margin-left: 5px;">7</span> Vehicles Transacting Outside of Car IQ
-        </p>
-      </div> ;;
+        {% else %}
+        <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708628039/lock-icon_u1wraq.svg" style="height: 25px; width: 25px;">
+        <span style = "margin-right: 5px;  margin-left: 5px;"></span> No Fuel Volume Issues Detected  <br>
+        {% endif %}
+
+
+        {% if Vehicle_Header_NonCarIQ._value > 0 %}
+        <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708615688/lock-open-icon_hhlpc8.svg" style="height: 25px; width: 25px;">
+        <span style = "margin-right: 5px;  margin-left: 5px;">{{Vehicle_Header_NonCarIQ}}</span>  Transacting Outside of Car IQ
+
+        {% else %}
+        <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708628039/lock-icon_u1wraq.svg" style="height: 25px; width: 25px;">
+        <span style = "margin-right: 5px;  margin-left: 5px;"></span> All Transactions Protected by Car IQ
+        {% endif %}
+           ;;
   }
 
+  dimension: Vehicles_Level_Fuel_ODOMETER{
+    label:"Vehicles Level Detail Header"
+    sql: ${TABLE}.VIN ;;
+    html:
+        {% if Fuel_Level_Status._value == "Providing" %}
+        <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708531977/no-petrol-icon_qhee7s.svg" title="Telematics provider is not providing fuel data for this vehicle" style="height: 25px; width: 25px;">
+        <span style = "margin-right: 5px;  margin-left: 5px;"></span> Vehicle Not Providing Fuel Data <br>
+        {% else %}
+        <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708531962/gas-station-icon_vrbcjc.svg" title="Telematics provider is not providing fuel data for this vehicle" style="height: 25px; width: 25px;">
+        <span style = "margin-right: 5px;  margin-left: 5px;"></span>Vehicle Providing Fuel Data <br>
+        {% endif %}
 
+        {% if Odometer_Level_Status._value == "Providing" %}
+        <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708531977/high-risk-alert-icon_iducd9.svg" alt="Telematics provider is not providing fuel data for this vehicle" style="height: 25px; width: 25px;">
+        <span style = "margin-right: 5px;  margin-left: 5px;"></span>Vehicles Not Providing Odometer
+        <br>
+        {% else %}
+        <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708627891/speedometer-icon_tl5yei.svg" title="Telematics provider is not providing fuel data for this vehicle" style="height: 25px; width: 25px;">
+        <span style = "margin-right: 5px;  margin-left: 5px;"></span>Vehicle Provides Odometer <br>
+        {% endif %}
+           ;;
+  }
 
 
   dimension: vehicle_desc2 {
