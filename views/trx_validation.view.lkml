@@ -283,7 +283,7 @@ view: trx_validation {
   dimension: Discrepancy_Type {
     type: string
     sql: ${TABLE}.Discrepancy_Type ;;
-    label: "Discrepancy Type"
+    label: "Discrepancy Type "
   }
 
 
