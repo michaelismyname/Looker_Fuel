@@ -95,10 +95,6 @@ view: trx_validation {
     sql: ${TABLE}.is_ttp ;;
   }
 
-  dimension: latlon {
-    type: string
-    sql: ${TABLE}.latlon ;;
-  }
 
   dimension: location_validation_distance_to_target_meters {
     type: number
@@ -126,18 +122,9 @@ view: trx_validation {
     sql: ${TABLE}.merchant_brand ;;
     html:
     {% if merchant_brand._value == "SHELL" %}
-    <div style="width: 170px; height: 30px; padding: 5px;">
-        Gallons Purchased:  <br>
-        <div style="float:left; text-align:right;  margin: 0 5px;  height: 15px; width:25px">124</div>
-        <div style="float:left;  background-color: #ffd100; margin: 0 5px; height: 20px; width:80px"></div>
-    </div>
-    <br>
-    <div style="width: 170px; height: 30px; padding: 5px;">
-        Gallons Observed In Tank:  <br>
-        <div style="float:left; text-align:right;  margin: 0 5px;  height: 15px; width:25px">12</div>
-        <div style="float:left;  background-color: #ffd100; margin: 0 5px; height: 20px; width:30px"></div>
-    </div>
-    <br>
+    <p style="float:left; margin-right: 10px;"><img src="https://images.gasbuddy.io/33xauto/b/122.png" height="35" width="35"></p>
+    <p style="float:left; margin-left: 10px;"> {{merchant_brand}}<br> {{merchant_address}}<br>  {{merchant_city}}, {{merchant_state}}</p>
+
     {% elsif merchant_brand._value == "QUIKTRIP" %}
     <img src="https://images.gasbuddy.io/33xauto/b/108.png"  height="35" width="35">
      <p style="float:left;" margin-right: 10px;><img src="https://images.gasbuddy.io/33xauto/b/122.png" height="35" width="35"></p>
@@ -274,6 +261,7 @@ view: trx_validation {
 
   dimension: user_name {
     type: string
+    label: "Driver"
     sql: ${TABLE}.user_Name ;;
   }
 
@@ -285,7 +273,20 @@ view: trx_validation {
   dimension: validation_type {
     type: string
     sql: ${TABLE}.validation_type ;;
+    label: "Issue"
+    html:
+          <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708634718/exclamation-warning-round-red-icon_wvr7cf.svg" style="height: 15px; width: 15px;">
+        {{validation_type}} ;;
   }
+
+
+  dimension: Discrepancy_Type {
+    type: string
+    sql: ${TABLE}.Discrepancy_Type ;;
+    label: "Discrepancy Type"
+  }
+
+
 
   dimension_group: veh_first_transaction_month {
     type: time
@@ -362,7 +363,7 @@ view: trx_validation {
     type: count_distinct
     label:"Vehicles"
     sql: ${TABLE}.VIN ;;
-    html: <p style="font-size: 1.2em; text-align:  centert;">{{ rendered_value }} <br> Transacting <br> Vehicles</p>;;
+    html: <p style="font-size: .8em; text-align:  centert;">{{ rendered_value }} <br> Transacting <br> Vehicles</p>;;
   }
 
   dimension: Fuel_Level_Status{
@@ -501,6 +502,24 @@ measure: Non_CAR_IQ_TRX {
   }
 
 
+  measure: Purchased_Gallons_Bar{
+    type: max
+    sql: ${TABLE}.Gallons_Bar ;;
+  }
+
+
+  measure: Observed_Gallons_Bar{
+    type: max
+    sql: ${TABLE}.Est_Gallons_Bar ;;
+  }
+
+
+  measure: Spend_Bar{
+    type: max
+    sql: ${TABLE}.spend_bar ;;
+  }
+
+
   dimension: Fuel_Error_Size {
     type: string
     sql: ${TABLE}.merchant_brand ;;
@@ -508,20 +527,70 @@ measure: Non_CAR_IQ_TRX {
 
         <div style="width: 170px; height: 30px; padding: 5px;">
             Gallons Purchased:  <br>
-            <div style="float:left; text-align:right;  margin: 0 5px;  height: 15px; width:25px">124</div>
-            <div style="float:left;  background-color: #ffd100; margin: 0 5px; height: 20px; width:80px"></div>
+            <div style="float:left; text-align:right;  margin: 0 5px;  height: 15px; width:35px">{{Gallons | round: 1 }}</div>
+            <div style="float:left;  background-color: #ffd100; margin: 0 5px; height: 20px; width:{{Purchased_Gallons_Bar}}px"></div>
         </div>
         <br>
         <div style="width: 170px; height: 30px; padding: 5px;">
             Gallons Observed In Tank:  <br>
-            <div style="float:left; text-align:right;  margin: 0 5px;  height: 15px; width:25px">12</div>
-            <div style="float:left;  background-color: #ffd100; margin: 0 5px; height: 20px; width:30px"></div>
-        </div>;;
+            <div style="float:left; text-align:right;  margin: 0 5px;  height: 15px; width:35px">{{Estimated_Gallons_In_Tank | round: 1 }}</div>
+            <div style="float:left;  background-color: #ffd100; margin: 0 5px; height: 20px; width:{{Observed_Gallons_Bar}}px"></div>
+        </div>
+
+        ;;
 
   }
 
 
+  dimension: latlon {
+    type: location
+    sql_latitude:${TABLE}.latitude ;;
+    sql_longitude:${TABLE}.longitude ;;
+    label: "location"
+    html:
 
+      <br>{{merchant_brand}}<br> {{merchant_address}}<br>  {{merchant_city}}, {{merchant_state}}<br><br>
+
+       Vehicle:
+      <br>
+      {% if vin._value != null %} {{vin}}<br>  {% endif %}
+      {% if vehicle_display_name._value != null %} {{vehicle_display_name}}<br>  {% endif %}
+
+      {% if vehicle_description._value != null %} {{vehicle_description}}  {% endif %}
+      <br><br>
+
+
+        <div style="width: 250px; height: 30px; padding: 5px;">
+            Gallons Purchased:  <br>
+            <div style="float:left; text-align:right;  margin: 0 5px;  height: 15px; width:35px">{{Gallons | round: 1 }}</div>
+            <div style="float:left;  background-color: #ffd100; margin: 0 5px; height: 20px; width:{{Purchased_Gallons_Bar}}px"></div>
+        </div>
+        <br>
+        {% if Vehicle_Header_Descripancy._value > 0 %}
+        <div style="width: 250px; height: 30px; padding: 5px;">
+            Gallons Observed In Tank:  <br>
+            <div style="float:left; text-align:right;  margin: 0 5px;  height: 15px; width:35px">{{Estimated_Gallons_In_Tank | round: 1 }}</div>
+            <div style="float:left;  background-color: #ffd100; margin: 0 5px; height: 20px; width:{{Observed_Gallons_Bar}}px"></div>
+        </div>
+        <br>
+         {% endif %}
+        <div style="width: 250px; height: 30px; padding: 5px;">
+            Spend:  <br>
+            <div style="float:left; text-align:right;  margin: 0 5px;  height: 15px; width:35px">${{Spend | number_format:"$#,##0.00"}}</div>
+            <div style="float:left;  background-color: #ffd100; margin: 0 5px; height: 20px; width:{{Spend_Bar}}px"></div>
+        </div>
+
+        <br><br>
+        {% if Vehicle_Header_Descripancy._value > 0 %}
+        <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708634718/exclamation-warning-round-red-icon_wvr7cf.svg" style="height: 15px; width: 15px;">
+        <span style = "margin-right: 5px;  margin-left: 5px;">{{Vehicle_Header_Descripancy}}</span> Issues Detected
+        <br><br>
+        {% else %}
+        <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708634594/green-checkmark-line-icon_eplap3.svg" style="height: 15px; width: 15px;">
+        <span style = "margin-right: 5px;  margin-left: 5px;"></span> No Issues Detected  <br><br>
+        {% endif %}
+        ;;
+  }
 
 
   dimension: vehicle_desc2 {
