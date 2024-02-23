@@ -528,13 +528,13 @@ measure: Non_CAR_IQ_TRX {
         <div style="width: 170px; height: 30px; padding: 5px;">
             Gallons Purchased:  <br>
             <div style="float:left; text-align:right;  margin: 0 5px;  height: 15px; width:35px">{{Gallons | round: 1 }}</div>
-            <div style="float:left;  background-color: #ffd100; margin: 0 5px; height: 20px; width:{{Purchased_Gallons_Bar}}px"></div>
+            <div style="float:left;  background-color:  #B3BAC5; margin: 0 5px; height: 20px; width:{{Purchased_Gallons_Bar}}px"></div>
         </div>
         <br>
         <div style="width: 170px; height: 30px; padding: 5px;">
             Gallons Observed In Tank:  <br>
             <div style="float:left; text-align:right;  margin: 0 5px;  height: 15px; width:35px">{{Estimated_Gallons_In_Tank | round: 1 }}</div>
-            <div style="float:left;  background-color: #ffd100; margin: 0 5px; height: 20px; width:{{Observed_Gallons_Bar}}px"></div>
+            <div style="float:left;  background-color:  #B3BAC5; margin: 0 5px; height: 20px; width:{{Observed_Gallons_Bar}}px"></div>
         </div>
 
         ;;
@@ -563,21 +563,21 @@ measure: Non_CAR_IQ_TRX {
         <div style="width: 250px; height: 30px; padding: 5px;">
             Gallons Purchased:  <br>
             <div style="float:left; text-align:right;  margin: 0 5px;  height: 15px; width:35px">{{Gallons | round: 1 }}</div>
-            <div style="float:left;  background-color: #ffd100; margin: 0 5px; height: 20px; width:{{Purchased_Gallons_Bar}}px"></div>
+            <div style="float:left;  background-color:  #B3BAC5; margin: 0 5px; height: 20px; width:{{Purchased_Gallons_Bar}}px"></div>
         </div>
         <br>
         {% if Vehicle_Header_Descripancy._value > 0 %}
         <div style="width: 250px; height: 30px; padding: 5px;">
             Gallons Observed In Tank:  <br>
             <div style="float:left; text-align:right;  margin: 0 5px;  height: 15px; width:35px">{{Estimated_Gallons_In_Tank | round: 1 }}</div>
-            <div style="float:left;  background-color: #ffd100; margin: 0 5px; height: 20px; width:{{Observed_Gallons_Bar}}px"></div>
+            <div style="float:left;  background-color:  #B3BAC5; margin: 0 5px; height: 20px; width:{{Observed_Gallons_Bar}}px"></div>
         </div>
         <br>
          {% endif %}
         <div style="width: 250px; height: 30px; padding: 5px;">
             Spend:  <br>
             <div style="float:left; text-align:right;  margin: 0 5px;  height: 15px; width:35px">${{Spend | number_format:"$#,##0.00"}}</div>
-            <div style="float:left;  background-color: #ffd100; margin: 0 5px; height: 20px; width:{{Spend_Bar}}px"></div>
+            <div style="float:left;  background-color:  #B3BAC5; margin: 0 5px; height: 20px; width:{{Spend_Bar}}px"></div>
         </div>
 
         <br><br>
