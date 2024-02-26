@@ -121,24 +121,23 @@ view: trx_validation {
     type: string
     sql: ${TABLE}.merchant_brand ;;
     html:
-    {% if merchant_brand._value == "SHELL" %}
-    <p style="float:left; margin-right: 10px;"><img src="https://images.gasbuddy.io/33xauto/b/122.png" height="35" width="35"></p>
-    <p style="float:left; margin-left: 10px;"> {{merchant_brand}}<br> {{merchant_address}}<br>  {{merchant_city}}, {{merchant_state}}</p>
-
-    {% elsif merchant_brand._value == "QUIKTRIP" %}
-    <img src="https://images.gasbuddy.io/33xauto/b/108.png"  height="35" width="35">
-     <p style="float:left;" margin-right: 10px;><img src="https://images.gasbuddy.io/33xauto/b/122.png" height="35" width="35"></p>
-    <p style="float:left;" margin-left: 10px;>  {{merchant_address}}<br>  {{vehicle_display_name}}</p>
-    <p style = display: block; background-color: #3d9970 width: 20% ><span class="text"> {{vehicle_display_name}} </span> </p>
-    <p style = display: block; background-color: #3d9970 width: 80% ><span class="text"> {{vehicle_display_name}} </span> </p>
-
-    {% elsif merchant_brand._value == "TEXACO" %}
-    <img src="https://images.gasbuddy.io/33xauto/b/135.png" height="35" width="35">
-    {% elsif merchant_brand._value == "CHEVRON"%}
-    <img src="https://images.gasbuddy.io/33xauto/b/31.png"  height="35" width="35">
-    {% else %}
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png" height="25" width="25">
-    {% endif %} ;;
+    {% if merchant_brand._value == "SHELL" %}<p style="float:left; margin-right: 10px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708973378/Shell_sotp3u.png" height=35" width="35"></p>
+    {% elsif merchant_brand._value == "SUNOCO" %}<p style="float:left; margin-right: 10px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708972967/Sunoco_dr5zzj.png" height=35" width="35"></p>
+    {% elsif merchant_brand._value == "SINCLAIR" %}<p style="float:left; margin-right: 10px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708972967/Sinclair_srrcns.png" height=35" width="35"></p>
+    {% elsif merchant_brand._value == "QUIKTRIP" %}<p style="float:left; margin-right: 10px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708972986/QuikTrip_z3pzak.png" height=35" width="35"></p>
+    {% elsif merchant_brand._value == "KUM&GO" %}<p style="float:left; margin-right: 10px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708972967/KumGO_ncryhd.png" height=35" width="35"></p>
+    {% elsif merchant_brand._value == "CIRCLE K" %}<p style="float:left; margin-right: 10px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708972967/CircleK_apkmg3.png" height=35" width="35"></p>
+    {% elsif merchant_brand._value == "CHEVRON" %}<p style="float:left; margin-right: 10px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708972995/Chevron_zqttin.png" height=35" width="35"></p>
+    {% elsif merchant_brand._value == "SPEEDWAY" %}<p style="float:left; margin-right: 10px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708972967/Speedway_yg7tic.png" height=35" width="35"></p>
+    {% elsif merchant_brand._value == "ARCO" %}<p style="float:left; margin-right: 10px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708973624/20_xl7yrr.png" height=35" width="35"></p>
+    {% elsif merchant_brand._value == "BP" %}<p style="float:left; margin-right: 10px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708972986/QT_vlwob6.png" height=35" width="35"></p>
+    {% elsif merchant_brand._value == "MAVERIK" %}<p style="float:left; margin-right: 10px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708973757/Maverik_z2kn9r.png" height=35" width="35"></p>
+    {% elsif merchant_brand._value == "76" %}<p style="float:left; margin-right: 10px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708972967/76_vydmwt.png" height=35" width="35"></p>
+    {% elsif merchant_brand._value == "VALERO" %}<p style="float:left; margin-right: 10px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708973858/Valero_skbwgt.png" height=35" width="35"></p>
+    {% elsif merchant_brand._value == "MARATHON" %}<p style="float:left; margin-right: 10px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708972995/marathon_cno3rs.png" height=35" width="35"></p>
+    {% else %}<p style="float:left; margin-right: 10px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708972985/OtherFuel_i6osax.png" height=35" width="35"></p>
+    {% endif %}
+    <p style="float:left; margin-left: 10px;"> {{merchant_brand}}<br> {{merchant_address}}<br>  {{merchant_city}}, {{merchant_state}}</p> ;;
   }
 
   dimension: merchant_city {
