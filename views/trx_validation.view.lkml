@@ -300,7 +300,13 @@ view: trx_validation {
     sql: ${TABLE}.veh_thumbnail ;;
     label: "Vehicle"
     html:
+
+    {% if veh_thumbnail._value != null %}
     <p style="float:left; margin: 0 5px; padding: 5px;"><img src="{{veh_thumbnail}}"  height="30" width="30" ></p>
+    {% else %}
+    <p style="float:left; margin: 0 5px; padding: 5px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708978808/truck-icon_p16vds.svg"  height="30" width="30" ></p>
+    {% endif %}
+
     <p style="float:left;">
      {% if vin._value != null %} {{vin}}<br>  {% endif %}
      {% if vehicle_display_name._value != null %} {{vehicle_display_name}}<br>  {% endif %}
