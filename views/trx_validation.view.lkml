@@ -35,6 +35,16 @@ view: trx_validation {
     sql: ${TABLE}.fleet_name ;;
   }
 
+  dimension: entity_id {
+    type: string
+    sql: ${TABLE}.entity_id ;;
+  }
+  dimension: org_id {
+    type: string
+    sql: ${TABLE}.org_id ;;
+  }
+
+
   dimension: fuel_pump_number {
     type: string
     sql: ${TABLE}.fuel_pump_number ;;
