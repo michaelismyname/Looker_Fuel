@@ -1,4 +1,4 @@
-explore: Transacting Vehicles Header {
+explore: trx_validation {
   access_filter: {
       {% if user_attribute['access_level'] == 'org' %}
         {% access_filters %}
