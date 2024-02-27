@@ -295,6 +295,9 @@ view: trx_validation {
     sql: ${TABLE}.Veh_First_Transaction_Month ;;
   }
 
+
+
+
   dimension: veh_thumbnail {
     type: string
     sql: ${TABLE}.veh_thumbnail ;;
@@ -304,7 +307,9 @@ view: trx_validation {
     {% if veh_thumbnail._value != null %}
     <p style="float:left; margin: 0 5px; padding: 5px;"><img src="{{veh_thumbnail}}"  height="30" width="30" ></p>
     {% else %}
-    <p style="float:left; margin: 0 5px; padding: 5px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708978808/truck-icon_p16vds.svg"  height="30" width="30" ></p>
+    <p style="float:left; margin: 0 5px; padding: 5px;">
+    <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708978808/truck-icon_p16vds.svg"  height="30" width="30" >
+    </p>
     {% endif %}
 
     <p style="float:left;">
@@ -598,20 +603,30 @@ measure: Non_CAR_IQ_TRX {
   }
 
 
+
+
   dimension: vehicle_desc2 {
     type: string
-    sql: ${TABLE}.vehicle_desc ;;
-    label: "Description"
+    sql: ${TABLE}.VIN ;;
+    label: "Vehicle Description with Thumbnail"
     html:
-    {% assign split_values = value | split: "<br>" %}
-    {% for val in split_values %}
-    {{ val }}
-    {% if forloop.index != split_values.size %}
-    <br>
-    {% endif %}
-    {% endfor %};;
-  }
 
+    {% if veh_thumbnail._value != null %}
+    <p style="float:left; margin: 0 5px; padding: 5px;"><img src="{{veh_thumbnail}}"  height="30" width="30" ></p>
+    {% else %}
+    <p style="float:left; margin: 0 5px; padding: 5px;">
+    <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708978808/truck-icon_p16vds.svg"  height="30" width="30" >
+    </p>
+    {% endif %}
+
+    <p style="float:left;">
+     {% if vin._value != null %} {{vin}}<br>  {% endif %}
+     {% if vehicle_display_name._value != null %} {{vehicle_display_name}}<br>  {% endif %}
+
+      {% if vehicle_description._value != null %} {{vehicle_description}}  {% endif %}
+      </p>;;
+    description: "Vehicle"
+  }
 
 
 
