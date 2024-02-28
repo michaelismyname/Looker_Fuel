@@ -11,6 +11,10 @@ view: trx_validation {
     # A dimension is a groupable field that can be used to filter query results.
     # This dimension will be called "Decision Status" in Explore.
 
+
+
+
+
   dimension: decision_status {
     type: string
     sql: ${TABLE}.decision_status ;;
@@ -41,7 +45,7 @@ view: trx_validation {
   }
   dimension: org_id {
     type: string
-    sql: ${TABLE}.org_id ;;
+    sql: ${TABLE}.organization_id ;;
   }
 
 

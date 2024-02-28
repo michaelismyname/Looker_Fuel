@@ -25,5 +25,15 @@ persist_with: reports_view_looker_default_datagroup
 # Typically, join parameters require that you define the join type, join relationship, and a sql_on clause.
 # Each joined view also needs to define a primary key.
 
-explore: trx_validation {}
 
+
+explore: trx_validation {
+  access_filter: {
+    field: entity_id
+    user_attribute: entity_id
+  }
+  access_filter: {
+    field: org_id
+    user_attribute: org_id
+  }
+}
