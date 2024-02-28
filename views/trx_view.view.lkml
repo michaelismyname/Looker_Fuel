@@ -358,7 +358,7 @@ view: trx_view {
     html: <p style="font-size: .8em; text-align:  centert;">{{ rendered_value }} <br> Transacting <br> Vehicles</p>;;
   }
 
-  dimension: map_location {
+  dimension: map_local {
     type: location
     sql_latitude:${TABLE}.latitude ;;
     sql_longitude:${TABLE}.longitude ;;
