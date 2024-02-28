@@ -37,3 +37,6 @@ explore: trx_validation {
     user_attribute: org_id
   }
 }
+
+explore: trx_view {
+}
