@@ -317,6 +317,24 @@ view: trx_view {
     description: "Vehicle"
   }
 
+  dimension: map_local {
+    type: location
+    sql_latitude:${TABLE}.latitude ;;
+    sql_longitude:${TABLE}.longitude ;;
+    label: "location"
+    html:
+
+      <br>{{merchant_brand}}<br> {{merchant_street}}<br>  {{merchant_city}}, {{merchant_state}}<br><br>
+
+                              Vehicle:
+                                          <br>
+                                          {% if vin._value != null %} {{vin}}<br>  {% endif %}
+                                          {% if vehicle_display_name._value != null %} {{vehicle_display_name}}<br>  {% endif %}
+
+      {% if vehicle_description._value != null %} {{vehicle_description}}  {% endif %}
+      <br>
+      <br>;;
+  }
 
 
   measure: Spend {
@@ -358,24 +376,7 @@ view: trx_view {
     html: <p style="font-size: .8em; text-align:  centert;">{{ rendered_value }} <br> Transacting <br> Vehicles</p>;;
   }
 
-  dimension: map_local {
-    type: location
-    sql_latitude:${TABLE}.latitude ;;
-    sql_longitude:${TABLE}.longitude ;;
-    label: "location"
-    html:
 
-      <br>{{merchant_brand}}<br> {{merchant_street}}<br>  {{merchant_city}}, {{merchant_state}}<br><br>
-
-                        Vehicle:
-                                    <br>
-                                    {% if vin._value != null %} {{vin}}<br>  {% endif %}
-                                    {% if vehicle_display_name._value != null %} {{vehicle_display_name}}<br>  {% endif %}
-
-      {% if vehicle_description._value != null %} {{vehicle_description}}  {% endif %}
-      <br>
-      <br>;;
-  }
 
   # ----- Sets of fields for drilling ------
   set: detail {
