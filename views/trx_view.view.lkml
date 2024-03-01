@@ -117,28 +117,28 @@ view: trx_view {
     type: string
     sql: ${TABLE}.merchant_brand ;;
     html:
-    {% if merchant_brand._value == "SHELL" %}<p style="float:left; margin-right: 10px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708973378/Shell_sotp3u.png" height=35" width="35"></p>
-    {% elsif merchant_brand._value == "SUNOCO" %}<p style="float:left; margin-right: 10px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708972967/Sunoco_dr5zzj.png" height=35" width="35"></p>
-    {% elsif merchant_brand._value == "SINCLAIR" %}<p style="float:left; margin-right: 10px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708972967/Sinclair_srrcns.png" height=35" width="35"></p>
-    {% elsif merchant_brand._value == "QUIKTRIP" %}<p style="float:left; margin-right: 10px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708972986/QuikTrip_z3pzak.png" height=35" width="35"></p>
-    {% elsif merchant_brand._value == "KUM&GO" %}<p style="float:left; margin-right: 10px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708972967/KumGO_ncryhd.png" height=35" width="35"></p>
-    {% elsif merchant_brand._value == "CIRCLE K" %}<p style="float:left; margin-right: 10px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708972967/CircleK_apkmg3.png" height=35" width="35"></p>
-    {% elsif merchant_brand._value == "CHEVRON" %}<p style="float:left; margin-right: 10px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708972995/Chevron_zqttin.png" height=35" width="35"></p>
-    {% elsif merchant_brand._value == "SPEEDWAY" %}<p style="float:left; margin-right: 10px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708972967/Speedway_yg7tic.png" height=35" width="35"></p>
-    {% elsif merchant_brand._value == "ARCO" %}<p style="float:left; margin-right: 10px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708973624/20_xl7yrr.png" height=35" width="35"></p>
-    {% elsif merchant_brand._value == "BP" %}<p style="float:left; margin-right: 10px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708972986/QT_vlwob6.png" height=35" width="35"></p>
-    {% elsif merchant_brand._value == "MAVERIK" %}<p style="float:left; margin-right: 10px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708973757/Maverik_z2kn9r.png" height=35" width="35"></p>
-    {% elsif merchant_brand._value == "76" %}<p style="float:left; margin-right: 10px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708972967/76_vydmwt.png" height=35" width="35"></p>
-    {% elsif merchant_brand._value == "VALERO" %}<p style="float:left; margin-right: 10px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708973858/Valero_skbwgt.png" height=35" width="35"></p>
-    {% elsif merchant_brand._value == "MARATHON" %}<p style="float:left; margin-right: 10px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708972995/marathon_cno3rs.png" height=35" width="35"></p>
-    {% elsif merchant_brand._value == "MURPHY USA" %}<p style="float:left; margin-right: 10px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1709127589/murphy_gxv5u3.png" height=35" width="35"></p>
-    {% elsif merchant_brand._value == "MURPHY EXPRESS" %}<p style="float:left; margin-right: 10px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1709127589/murphy_gxv5u3.png" height=35" width="35"></p>
+    {% if merchant_brand._value == "SHELL" %}<p style="float:left; margin-right: 10px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708973378/Shell_sotp3u.png" height=24" width="24"></p>
+    {% elsif merchant_brand._value == "SUNOCO" %}<p style="float:left; margin-right: 10px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708972967/Sunoco_dr5zzj.png" height=24" width="24"></p>
+    {% elsif merchant_brand._value == "SINCLAIR" %}<p style="float:left; margin-right: 10px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708972967/Sinclair_srrcns.png" height=24" width="24"></p>
+    {% elsif merchant_brand._value == "QUIKTRIP" %}<p style="float:left; margin-right: 10px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708972986/QuikTrip_z3pzak.png" height=24" width="24"></p>
+    {% elsif merchant_brand._value == "KUM&GO" %}<p style="float:left; margin-right: 10px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708972967/KumGO_ncryhd.png" height=24" width="24"></p>
+    {% elsif merchant_brand._value == "CIRCLE K" %}<p style="float:left; margin-right: 10px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708972967/CircleK_apkmg3.png" height=24" width="24"></p>
+    {% elsif merchant_brand._value == "CHEVRON" %}<p style="float:left; margin-right: 10px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708972995/Chevron_zqttin.png" height=24" width="24"></p>
+    {% elsif merchant_brand._value == "SPEEDWAY" %}<p style="float:left; margin-right: 10px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708972967/Speedway_yg7tic.png" height=24" width="24"></p>
+    {% elsif merchant_brand._value == "ARCO" %}<p style="float:left; margin-right: 10px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708973624/20_xl7yrr.png" height=24" width="24"></p>
+    {% elsif merchant_brand._value == "BP" %}<p style="float:left; margin-right: 10px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708972986/QT_vlwob6.png" height=24" width="24"></p>
+    {% elsif merchant_brand._value == "MAVERIK" %}<p style="float:left; margin-right: 10px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708973757/Maverik_z2kn9r.png" height=24" width="24"></p>
+    {% elsif merchant_brand._value == "76" %}<p style="float:left; margin-right: 10px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708972967/76_vydmwt.png" height=24" width="24"></p>
+    {% elsif merchant_brand._value == "VALERO" %}<p style="float:left; margin-right: 10px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708973858/Valero_skbwgt.png" height=24" width="24"></p>
+    {% elsif merchant_brand._value == "MARATHON" %}<p style="float:left; margin-right: 10px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708972995/marathon_cno3rs.png" height=24" width="24"></p>
+    {% elsif merchant_brand._value == "MURPHY USA" %}<p style="float:left; margin-right: 10px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1709127589/murphy_gxv5u3.png" height=24" width="24"></p>
+    {% elsif merchant_brand._value == "MURPHY EXPRESS" %}<p style="float:left; margin-right: 10px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1709127589/murphy_gxv5u3.png" height=24" width="24"></p>
 
-      {% elsif merchant_brand._value == "TEXACO" %}<p style="float:left; margin-right: 10px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708972995/Texaco_xdjoxn.png" height=35" width="35"></p>
+      {% elsif merchant_brand._value == "TEXACO" %}<p style="float:left; margin-right: 10px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708972995/Texaco_xdjoxn.png" height=24" width="24"></p>
 
 
 
-      {% else %}<p style="float:left; margin-right: 10px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708972985/OtherFuel_i6osax.png" height=35" width="35"></p>
+      {% else %}<p style="float:left; margin-right: 10px;"><img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708972985/OtherFuel_i6osax.png" height=24" width="24"></p>
       {% endif %};;
   }
 
