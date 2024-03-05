@@ -443,38 +443,63 @@ measure: Non_CAR_IQ_TRX {
     type: count_distinct
     label:"Vehicles Header"
     sql: ${TABLE}.VIN ;;
-  html: <div>
-        <p style="font-size: 16px; text-align: left;">
+  html:
+        <br>
 
+        <div>
         {% if Distinct_Vehicles_No_Fuel_Level._value > 0 %}
-        <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708531977/no-petrol-icon_qhee7s.svg" title="Telematics provider is not providing fuel data for this vehicle" style="height: 25px; width: 25px;">
-        <span style = "margin-right: 5px;  margin-left: 5px;"> {{Distinct_Vehicles_No_Fuel_Level}}</span> Vehicles Not Providing Fuel Data <br>
-        {% else %}
-        <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708531962/gas-station-icon_vrbcjc.svg" title="Telematics provider is not providing fuel data for this vehicle" style="height: 25px; width: 25px;">
-        <span style = "margin-right: 5px;  margin-left: 5px;"></span>All Vehicles are supplying Fuel Data <br>
-        {% endif %}
 
-
-        {% if Distinct_Vehicles_No_Odometer._value > 0 %}
-        <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708531977/high-risk-alert-icon_iducd9.svg" alt="Telematics provider is not providing fuel data for this vehicle" style="height: 25px; width: 25px;">
-        <span style = "margin-right: 5px;  margin-left: 5px;"> {{Distinct_Vehicles_No_Odometer}}</span>Vehicles Not Providing Odometer Data
-        <br>
-        {% else %}
-        <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708627891/speedometer-icon_tl5yei.svg" title="Telematics provider is not providing fuel data for this vehicle" style="height: 25px; width: 25px;">
-        <span style = "margin-right: 5px;  margin-left: 5px;"></span>All Vehicles are supplying Odometer Data <br>
-        {% endif %}
-
-        {% if Non_CAR_IQ_TRX._value > 0 %}
-        <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708615688/lock-open-icon_hhlpc8.svg" alt="Telematics provider is not providing fuel data for this vehicle" style="height: 25px; width: 25px;">
-        <span style = "margin-right: 5px;  margin-left: 5px;">{{Non_CAR_IQ_TRX}}</span>  Vehicles Transacting Outside of Car IQ
-        <br>
-        {% else %}
-        <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708628039/lock-icon_u1wraq.svg" alt="Telematics provider is not providing fuel data for this vehicle" style="height: 25px; width: 25px;">
-        <span style = "margin-right: 5px;  margin-left: 5px;"></span> All Transactions On Car IQ Platform
-        {% endif %}
+        <p style="font-size: 12px; float:left;">
+        <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708531977/no-petrol-icon_qhee7s.svg" title="Telematics provider is not providing fuel data for this vehicle" style="float:left; height: 35px; width: 35px; margin-right: 15px">
         </p>
-      </div> ;;
+        <p style="font-size: 12px; text-align: left; float:left;">
+        <span style = "margin-left: 1px; font-weight: bold;"> {{Distinct_Vehicles_No_Fuel_Level}}</span> Vehicles Not <br> Providing Fuel Data <br>
+        </p>
+        {% else %}
+        <p style="font-size: 12px; float:left;">
+        <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708531962/gas-station-icon_vrbcjc.svg" title="Telematics provider is not providing fuel data for this vehicle" style="float:left; height: 35px; width: 35px; margin-right: 15px">
+        </p>
+        <p style="font-size: 12px; text-align: left; float:left;">
+        <span style = "margin-left: 1px; font-weight: bold;"></span>All Vehicles are <br> supplying Fuel Data
+         </p>
+        {% endif %}
+
+        </div>
+        <br><br><br>
+
+        <div>
+        {% if Distinct_Vehicles_No_Odometer._value > 0 %}
+        <p style="font-size: 12px; float:left;">
+        <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708531977/high-risk-alert-icon_iducd9.svg" alt="Telematics provider is not providing fuel data for this vehicle" style="float:left; height: 35px; width: 35px; margin-right: 15px">
+        </p>
+        <p style="font-size: 12px; text-align: left; float:left;">
+        <span style = "margin-left: 1px; font-weight: bold;">  {{Distinct_Vehicles_No_Odometer}}</span> Vehicles Not <br>Providing Odometer Data
+        </p>
+        <br>
+        {% else %}
+        <p style="font-size: 12px; float:left;">
+        <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708627891/speedometer-icon_tl5yei.svg" title="Telematics provider is not providing fuel data for this vehicle" style="float:left; height: 35px; width: 35px; margin-right: 15px">
+        </p>
+        <p style="font-size: 12px; text-align: left; float:left;">
+        <span style = "margin-left: 1px; font-weight: bold;"> </span>All Vehicles are <br>supplying Odometer Data <br>
+        </p>
+        {% endif %}
+        </div>
+        <br>
+
+;;
 }
+
+
+       ## {% if Non_CAR_IQ_TRX._value > 0 %}
+       ##  <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708615688/lock-open-icon_hhlpc8.svg" alt="Telematics provider is not providing fuel data for this vehicle" style="height: 25px; width: 25px;">
+       ##  <span style = "margin-right: 5px;  margin-left: 5px;">{{Non_CAR_IQ_TRX}}</span>  Vehicles Transacting Outside of Car IQ
+      ##  <br>
+      ##  {% else %}
+      ##  <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708628039/lock-icon_u1wraq.svg" alt="Telematics provider is not providing fuel data for this vehicle" style="height: 25px; width: 25px;">
+      ##  <span style = "margin-right: 5px;  margin-left: 5px;"></span> All Transactions On Car IQ Platform
+      ##  {% endif %}
+      ##  </p></div>
 
 
   dimension: Vehicles_Level_Header{
@@ -489,18 +514,17 @@ measure: Non_CAR_IQ_TRX {
         <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708634594/green-checkmark-line-icon_eplap3.svg" style="height: 15px; width: 15px;">
         <span style = "margin-right: 5px;  margin-left: 5px;"></span> No Fuel Volume Issues Detected  <br><br>
         {% endif %}
-
-
-        {% if Vehicle_Header_NonCarIQ._value > 0 %}
-        <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708615688/lock-open-icon_hhlpc8.svg" style="height: 15px; width: 15px;">
-        <span style = "margin-right: 5px;  margin-left: 5px;">{{Vehicle_Header_NonCarIQ}}</span>  Transacting Outside of Car IQ
-
-        {% else %}
-        <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708628039/lock-icon_u1wraq.svg" style="height: 15px; width: 15px;">
-        <span style = "margin-right: 5px;  margin-left: 5px;"></span> Transactions All with Car IQ
-        {% endif %}
            ;;
   }
+
+       ## {% if Vehicle_Header_NonCarIQ._value > 0 %}
+       ## <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708615688/lock-open-icon_hhlpc8.svg" style="height: 15px; width: 15px;">
+       ##  <span style = "margin-right: 5px;  margin-left: 5px;">{{Vehicle_Header_NonCarIQ}}</span>  Transacting Outside of Car IQ
+       ##  {% else %}
+       ##  <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708628039/lock-icon_u1wraq.svg" style="height: 15px; width: 15px;">
+       ## <span style = "margin-right: 5px;  margin-left: 5px;"></span> Transactions All with Car IQ
+       ##  {% endif %}
+
 
   dimension: Vehicles_Level_Fuel_ODOMETER{
     label:"Vehicles Level Detail Fuel & Odometer"
