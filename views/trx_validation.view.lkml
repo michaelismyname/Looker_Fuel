@@ -24,6 +24,9 @@ view: trx_validation {
     type: number
     sql: ${TABLE}.disc_count ;;
   }
+
+
+
   # Dates and timestamps can be represented in Looker using a dimension group of type: time.
   # Looker converts dates and timestamps to the specified timeframes within the dimension group.
 
@@ -309,8 +312,18 @@ view: trx_validation {
     sql: ${TABLE}.Veh_First_Transaction_Month ;;
   }
 
+  dimension: fuel_tank_capacity_gal {
+    type: number
+    sql: ${TABLE}.fuel_tank_capacity_gal ;;
+  }
 
-
+    #{% if veh_thumbnail._value != null %}
+    #<p style="float:left; margin: 0 5px; padding: 5px;"><img src="{{veh_thumbnail}}"  height="30" width="30" ></p>
+    #{% else %}
+    #<p style="float:left; margin: 0 5px; padding: 5px;">
+    #<img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708978808/truck-icon_p16vds.svg"  height="30" width="30" >
+    #</p>
+    #{% endif %}
 
   dimension: veh_thumbnail {
     type: string
@@ -318,19 +331,14 @@ view: trx_validation {
     label: "Vehicle"
     html:
 
-    {% if veh_thumbnail._value != null %}
-    <p style="float:left; margin: 0 5px; padding: 5px;"><img src="{{veh_thumbnail}}"  height="30" width="30" ></p>
-    {% else %}
-    <p style="float:left; margin: 0 5px; padding: 5px;">
-    <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708978808/truck-icon_p16vds.svg"  height="30" width="30" >
-    </p>
-    {% endif %}
+
 
     <p style="float:left;">
      {% if vin._value != null %} {{vin}}<br>  {% endif %}
      {% if vehicle_display_name._value != null %} {{vehicle_display_name}}<br>  {% endif %}
 
-     {% if vehicle_description._value != null %} {{vehicle_description}}  {% endif %}
+     {% if vehicle_description._value != null %} {{vehicle_description}}<br>  {% endif %}
+     {% if fuel_tank_capacity_gal._value != null %}  Fuel Tank Capacity: {{fuel_tank_capacity_gal}}  {% endif %}
     </p>;;
     description: "Vehicle"
   }
@@ -639,7 +647,13 @@ measure: Non_CAR_IQ_TRX {
         {% endif %}
         ;;
   }
-
+    #{% if veh_thumbnail._value != null %}
+    #<p style="float:left; margin: 0 5px; padding: 5px;"><img src="{{veh_thumbnail}}"  height="30" width="30" ></p>
+    #{% else %}
+    #<p style="float:left; margin: 0 5px; padding: 5px;">
+    #<img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708978808/truck-icon_p16vds.svg"  height="30" width="30" >
+    #</p>
+    #{% endif %}
 
 
 
@@ -661,7 +675,8 @@ measure: Non_CAR_IQ_TRX {
      {% if vin._value != null %} {{vin}}<br>  {% endif %}
      {% if vehicle_display_name._value != null %} {{vehicle_display_name}}<br>  {% endif %}
 
-      {% if vehicle_description._value != null %} {{vehicle_description}}  {% endif %}
+      {% if vehicle_description._value != null %} {{vehicle_description}} <br> {% endif %}
+      {% if fuel_tank_capacity_gal._value != null %}  Fuel Tank: {{fuel_tank_capacity_gal}} gal {% endif %}
       </p>;;
     description: "Vehicle"
   }
