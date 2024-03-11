@@ -564,6 +564,12 @@ measure: Non_CAR_IQ_TRX {
   }
 
 
+  measure: No_of_Desc{
+    type: sum
+    sql: ${TABLE}.disc_count ;;
+  }
+
+
   measure: Observed_Gallons_Bar{
     type: max
     sql: ${TABLE}.Est_Gallons_Bar ;;
