@@ -398,6 +398,13 @@ view: trx_validation {
     html: <p style="font-size: .8em; text-align:  centert;">{{ rendered_value }} <br> Transacting <br> Vehicles</p>;;
   }
 
+  measure: Distinct_Vehicles_No_HTML {
+    type: count_distinct
+    label:"Vehicles No HTML"
+    sql: ${TABLE}.VIN ;;
+ }
+
+
   dimension: Fuel_Level_Status{
     type: string
     sql: ${TABLE}.Fuel_LEVEL_Category ;;
@@ -532,6 +539,10 @@ measure: Non_CAR_IQ_TRX {
        ##  <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708628039/lock-icon_u1wraq.svg" style="height: 15px; width: 15px;">
        ## <span style = "margin-right: 5px;  margin-left: 5px;"></span> Transactions All with Car IQ
        ##  {% endif %}
+
+
+
+
 
 
   dimension: Vehicles_Level_Fuel_ODOMETER{
