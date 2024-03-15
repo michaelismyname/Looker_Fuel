@@ -598,7 +598,7 @@ measure: Non_CAR_IQ_TRX {
     sql: ${TABLE}.merchant_brand ;;
     html:
 
-        <div style="width: 170px; height: 30px; padding: 5px;">
+        <div style="width: 210px; height: 30px; padding: 5px;">
             Gallons Purchased:  <br>
             <div style="float:left; text-align:right;  margin: 0 5px;  height: 15px; width:35px">{{Gallons | round: 1 }}</div>
             <div style="float:left;  background-color:  #B3BAC5; margin: 0 5px; height: 20px; width:{{Purchased_Gallons_Bar}}px"></div>
