@@ -278,6 +278,7 @@ view: trx_validation {
   dimension: user_name {
     type: string
     label: "Driver"
+    description: "Driver Name"
     sql: ${TABLE}.user_Name ;;
   }
 
