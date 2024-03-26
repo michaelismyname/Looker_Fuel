@@ -287,6 +287,12 @@ view: trx_validation {
     sql: ${TABLE}.validation_category ;;
   }
 
+  dimension: fuel_code {
+    type: string
+    sql: ${TABLE}.fuel_code ;;
+  }
+
+
   dimension: validation_type {
     type: string
     sql: ${TABLE}.validation_type ;;
@@ -298,12 +304,15 @@ view: trx_validation {
       {{validation_type}}
       {% else %}
       <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708634718/exclamation-warning-round-red-icon_wvr7cf.svg" style="height: 15px; width: 15px;">
-
-{{validation_type}}
-<ul><li> Ensure Fuel Tank Capacity is Correct</li>
-<li>Is Driver Filling Up Other Equipment?</li>
-<li>Did Driver choose wrong vehicle?  </li></ul>
-{% endif %} ;;
+      {{validation_type}}
+      {% endif %}
+      {% if fuel_code._value == 'F-NV3' %}
+      <ul><li> Ensure fuel tank capacity is correct</li></ul>
+      {% elsif fuel_code._value == 'F-NV2' %}
+      <ul><li>Is Driver filling up other equipment/tank?</li></ul>
+      {% elsif fuel_code._value == 'F-NV1' %}
+      <ul><li>Did Driver choose wrong vehicle?</li></ul>
+      {% endif %}  ;;
   }
 
 
