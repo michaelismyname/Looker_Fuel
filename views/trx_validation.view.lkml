@@ -642,7 +642,7 @@ measure: Non_CAR_IQ_TRX {
         <br>
         <div style="width: 170px; height: 30px; padding: 5px;">
 
-       {% if fuel_code._value == 'F-UV0' %}
+       {% if fuel_code._value == 'F-NV3' %}
       <br>
       {% else %}
             Gallons Observed In Tank:  <br>
