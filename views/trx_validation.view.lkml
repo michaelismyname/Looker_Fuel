@@ -649,7 +649,11 @@ measure: Non_CAR_IQ_TRX {
 
       <br>{{merchant_brand}}<br> {{merchant_address}}<br>  {{merchant_city}}, {{merchant_state}}<br><br>
 
-       Vehicle:
+      Driver:
+         {% if user_name._value != null %} {{user_name}}  {% endif %}
+      <br><br>
+
+      Vehicle:
       <br>
       {% if vin._value != null %} {{vin}}<br>  {% endif %}
       {% if vehicle_display_name._value != null %} {{vehicle_display_name}}<br>  {% endif %}
@@ -659,23 +663,17 @@ measure: Non_CAR_IQ_TRX {
 
 
         <div style="width: 250px; height: 30px; padding: 5px;">
-            Gallons Purchased:  <br>
-            <div style="float:left; text-align:right;  margin: 0 5px;  height: 15px; width:35px">{{Gallons | round: 1 }}</div>
-            <div style="float:left;  background-color:  #B3BAC5; margin: 0 5px; height: 20px; width:{{Purchased_Gallons_Bar}}px"></div>
+            Gallons Purchased:  <div style="float:left; text-align:right;  margin: 0 5px;  height: 15px; width:35px">{{Gallons | round: 1 }}</div>
         </div>
         <br>
         {% if Vehicle_Header_Descripancy._value > 0 %}
         <div style="width: 250px; height: 30px; padding: 5px;">
-            Gallons Observed In Tank:  <br>
-            <div style="float:left; text-align:right;  margin: 0 5px;  height: 15px; width:35px">{{Estimated_Gallons_In_Tank | round: 1 }}</div>
-            <div style="float:left;  background-color:  #B3BAC5; margin: 0 5px; height: 20px; width:{{Observed_Gallons_Bar}}px"></div>
-        </div>
+            Gallons Observed In Tank: {{Estimated_Gallons_In_Tank | round: 1 }}</div>
+
         <br>
          {% endif %}
         <div style="width: 250px; height: 30px; padding: 5px;">
-            Spend:  <br>
-            <div style="float:left; text-align:right;  margin: 0 5px;  height: 15px; width:35px">${{Spend | number_format:"$#,##0.00"}}</div>
-            <div style="float:left;  background-color:  #B3BAC5; margin: 0 5px; height: 20px; width:{{Spend_Bar}}px"></div>
+            Spend:  ${{Spend | number_format:"$#,##0.00"}}
         </div>
 
         <br><br>
