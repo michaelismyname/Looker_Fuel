@@ -397,6 +397,13 @@ view: trx_validation {
     html: {{ rendered_value }} ;;
   }
 
+  measure: DISCR_TOTAL {
+    type: sum
+    sql: ${TABLE}.DISCR_TOTAL ;;
+    value_format: "#,##0.0"
+    html: {{ rendered_value }} ;;
+  }
+
   measure: Distinct_Vehicles {
     type: count_distinct
     label:"Vehicles"
