@@ -298,7 +298,10 @@ view: trx_validation {
       {% else %}
       <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708634718/exclamation-warning-round-red-icon_wvr7cf.svg" style="height: 15px; width: 15px;">
       {% endif %}
-{{validation_type}} ;;
+{{validation_type}}
+<ul><li> Ensure Fuel Tank Capacity is Correct</li>
+<li>Is Driver Filling Up Other Equipment?</li>
+<li>Did Driver choose wrong vehicle?  </li></ul>;;
   }
 
 
