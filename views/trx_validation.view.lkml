@@ -647,7 +647,7 @@ measure: Non_CAR_IQ_TRX {
     label: "location"
     html:
 
-      <br>{{merchant_brand}}<br> {{merchant_address}},  {{merchant_city}}, {{merchant_state}}<br><br>
+      {{merchant_brand}}<br> {{merchant_address}},  {{merchant_city}}, {{merchant_state}}<br><br>
 
       Driver:
          {% if user_name._value != null %} {{user_name}}  {% endif %}
