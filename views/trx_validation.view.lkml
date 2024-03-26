@@ -670,8 +670,7 @@ measure: Non_CAR_IQ_TRX {
             Gallons Observed In Tank: {{Estimated_Gallons_In_Tank | round: 1 }}
             <br>
          {% endif %}
-        <div style="width: 250px; padding: 5px;">
-            Spend:  ${{Spend | number_format:"$#,##0.00"}}
+        Spend:  ${{Spend | number_format:"$#,##0.00"}}
         </div>
 
         <br>
