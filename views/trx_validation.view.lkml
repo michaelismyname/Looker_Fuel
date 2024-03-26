@@ -295,13 +295,15 @@ view: trx_validation {
 
       {% if validation_type._value == 'Validated Transaction' %}
       <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708634594/green-checkmark-line-icon_eplap3.svg" style="height: 15px; width: 15px;">
+      {{validation_type}}
       {% else %}
       <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708634718/exclamation-warning-round-red-icon_wvr7cf.svg" style="height: 15px; width: 15px;">
-      {% endif %}
+
 {{validation_type}}
 <ul><li> Ensure Fuel Tank Capacity is Correct</li>
 <li>Is Driver Filling Up Other Equipment?</li>
-<li>Did Driver choose wrong vehicle?  </li></ul>;;
+<li>Did Driver choose wrong vehicle?  </li></ul>
+{% endif %} ;;
   }
 
 
