@@ -647,7 +647,7 @@ measure: Non_CAR_IQ_TRX {
     label: "location"
     html:
 
-      <br>{{merchant_brand}}<br> {{merchant_address}}<br>  {{merchant_city}}, {{merchant_state}}<br><br>
+      <br>{{merchant_brand}}<br> {{merchant_address}},  {{merchant_city}}, {{merchant_state}}<br><br>
 
       Driver:
          {% if user_name._value != null %} {{user_name}}  {% endif %}
@@ -662,17 +662,16 @@ measure: Non_CAR_IQ_TRX {
       <br><br>
 
 
-        <div style="width: 250px; height: 30px; padding: 5px;">
-            Gallons Purchased:  <div style="float:left; text-align:right;  margin: 0 5px;  height: 15px; width:35px">{{Gallons | round: 1 }}</div>
-        </div>
+        <div style="width: 250px;  padding: 5px;">
+            Gallons Purchased:  {{Gallons | round: 1 }}</div>
         <br>
         {% if Vehicle_Header_Descripancy._value > 0 %}
-        <div style="width: 250px; height: 30px; padding: 5px;">
+        <div style="width: 250px;  padding: 5px;">
             Gallons Observed In Tank: {{Estimated_Gallons_In_Tank | round: 1 }}</div>
 
         <br>
          {% endif %}
-        <div style="width: 250px; height: 30px; padding: 5px;">
+        <div style="width: 250px; padding: 5px;">
             Spend:  ${{Spend | number_format:"$#,##0.00"}}
         </div>
 
