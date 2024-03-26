@@ -663,23 +663,22 @@ measure: Non_CAR_IQ_TRX {
 
 
         <div style="width: 250px;  padding: 5px;">
-            Gallons Purchased:  {{Gallons | round: 1 }}</div>
-        <br>
-        {% if Vehicle_Header_Descripancy._value > 0 %}
-        <div style="width: 250px;  padding: 5px;">
-            Gallons Observed In Tank: {{Estimated_Gallons_In_Tank | round: 1 }}</div>
+            Gallons Purchased:  {{Gallons | round: 1 }}
 
-        <br>
+        {% if Vehicle_Header_Descripancy._value > 0 %}
+
+            Gallons Observed In Tank: {{Estimated_Gallons_In_Tank | round: 1 }}
+            <br>
          {% endif %}
         <div style="width: 250px; padding: 5px;">
             Spend:  ${{Spend | number_format:"$#,##0.00"}}
         </div>
 
-        <br><br>
+        <br>
         {% if Vehicle_Header_Descripancy._value > 0 %}
         <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708634718/exclamation-warning-round-red-icon_wvr7cf.svg" style="height: 15px; width: 15px;">
         <span style = "margin-right: 5px;  margin-left: 5px;">{{Vehicle_Header_Descripancy}}</span> Issues Detected
-        <br><br>
+        <br>
         {% else %}
         <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708634594/green-checkmark-line-icon_eplap3.svg" style="height: 15px; width: 15px;">
         <span style = "margin-right: 5px;  margin-left: 5px;"></span> No Issues Detected  <br><br>
