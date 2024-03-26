@@ -663,7 +663,7 @@ measure: Non_CAR_IQ_TRX {
 
 
         <div style="width: 250px;  padding: 5px;">
-            Gallons Purchased:  {{Gallons | round: 1 }}
+            Gallons Purchased:  {{Gallons | round: 1 }}<br>
 
         {% if Vehicle_Header_Descripancy._value > 0 %}
 
@@ -681,7 +681,7 @@ measure: Non_CAR_IQ_TRX {
         <br>
         {% else %}
         <img src="https://res.cloudinary.com/dwogets4p/image/upload/v1708634594/green-checkmark-line-icon_eplap3.svg" style="height: 15px; width: 15px;">
-        <span style = "margin-right: 5px;  margin-left: 5px;"></span> No Issues Detected  <br><br>
+        <span style = "margin-right: 5px;  margin-left: 5px;"></span> No Issues Detected  <br>
         {% endif %}
         ;;
   }
