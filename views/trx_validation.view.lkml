@@ -316,6 +316,8 @@ view: trx_validation {
   }
 
 
+
+
   dimension: Discrepancy_Type {
     type: string
     sql: ${TABLE}.Discrepancy_Type ;;
@@ -639,10 +641,15 @@ measure: Non_CAR_IQ_TRX {
         </div>
         <br>
         <div style="width: 170px; height: 30px; padding: 5px;">
+
+       {% if fuel_code._value == 'F-UV0' %}
+      <br>
+      {% else %}
             Gallons Observed In Tank:  <br>
             <div style="float:left; text-align:right;  margin: 0 5px;  height: 15px; width:35px">{{Estimated_Gallons_In_Tank | round: 1 }}</div>
             <div style="float:left;  background-color:  #B3BAC5; margin: 0 5px; height: 20px; width:{{Observed_Gallons_Bar}}px"></div>
-        </div>
+        {% endif %}
+       </div>
 
         ;;
 
