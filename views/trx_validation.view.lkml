@@ -62,23 +62,23 @@ view: trx_validation {
     sql: ${TABLE}.fuel_validation_est_event_time_error ;;
   }
 
-  dimension: fuel_validation_est_fuel_after {
-    type: number
+  measure: fuel_validation_est_fuel_after {
+    type: sum
     sql: ${TABLE}.fuel_validation_est_fuel_after ;;
   }
 
   measure: fuel_validation_est_fuel_before {
-    type: number
+    type: sum
     sql: ${TABLE}.fuel_validation_est_fuel_before ;;
   }
 
   measure: fuel_validation_est_fuel_volume {
-    type: number
+    type: sum
     sql: ${TABLE}.fuel_validation_est_fuel_volume ;;
   }
 
   measure: fuel_validation_est_fuel_volume_error {
-    type: number
+    type: sum
     sql: ${TABLE}.fuel_validation_est_fuel_volume_error ;;
   }
 
