@@ -412,7 +412,6 @@ view: trx_validation {
   measure: DISCR_Spend_TOTAL {
     type: sum
     value_format: "$#,##0.00"
-    label: "Vehicle Spend"
     sql:  ${TABLE}.DISCR_Spend_TOTAL ;;  }
 
 
